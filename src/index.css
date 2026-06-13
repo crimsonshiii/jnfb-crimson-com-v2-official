@@ -1,0 +1,447 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom scrollbar to match our sleek dark crimson theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #272730;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #dc2626;
+}
+
+/* Subtle scanning line effect and noise backgrounds for tactical elements */
+.scanner-grid {
+  background-size: 40px 40px;
+  background-image: linear-gradient(to right, var(--theme-scanner-grid-color, rgba(220, 38, 38, 0.03)) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--theme-scanner-grid-color, rgba(220, 38, 38, 0.03)) 1px, transparent 1px);
+}
+
+.scanner-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--theme-scanner-line-color, rgba(220, 38, 38, 0.4)), transparent);
+  animation: scan 4s linear infinite;
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, var(--gradient-dark-1, #000000) 0%, var(--gradient-dark-2, #200404) 45%, var(--gradient-dark-3, #0a0101) 75%, var(--gradient-dark-1, #000000) 100%) no-repeat fixed;
+  color: #f4f4f5;
+  overflow-x: hidden;
+  font-family: var(--font-sans);
+}
+
+.bg-custom-gradient {
+  background: linear-gradient(135deg, var(--gradient-dark-1, #000000) 0%, var(--gradient-dark-2, #200404) 45%, var(--gradient-dark-3, #0a0101) 75%, var(--gradient-dark-1, #000000) 100%) no-repeat fixed;
+}
+
+@theme inline {
+  --font-heading: var(--font-sans);
+  --font-sans: 'Geist Variable', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* DEFAULT RED THEME VARIABLES */
+  --gradient-dark-1: #000000;
+  --gradient-dark-2: #200404;
+  --gradient-dark-3: #0a0101;
+  
+  --gradient-light-1: #ffffff;
+  --gradient-light-2: #fff2f2;
+  --gradient-light-3: #ffebeb;
+  --gradient-light-4: #fff8f8;
+
+  --theme-red-300-light: #7f1d1d;
+  --theme-red-400-light: #b91c1c;
+  --theme-red-500-light: #991b1b;
+
+  --theme-scanner-grid-color: rgba(220, 38, 38, 0.03);
+  --theme-scanner-line-color: rgba(220, 38, 38, 0.4);
+
+  --theme-shadow-primary: rgba(185, 28, 28, 0.25);
+  --theme-shadow-secondary: rgba(239, 68, 68, 0.1);
+  --theme-shadow-tertiary: rgba(185, 28, 28, 0.06);
+}
+
+html.theme-green {
+  --color-red-300: #86efac;
+  --color-red-400: #4ade80;
+  --color-red-500: #22c55e;
+  --color-red-650: #10b981;
+  --color-red-600: #16a34a;
+  --color-red-700: #15803d;
+  --color-red-800: #166534;
+  --color-red-900: #14532d;
+  --color-red-950: #052e16;
+
+  --theme-red-300-light: #14532d;
+  --theme-red-400-light: #16a34a;
+  --theme-red-500-light: #15803d;
+
+  --gradient-dark-1: #000000;
+  --gradient-dark-2: #042004;
+  --gradient-dark-3: #010a01;
+
+  --gradient-light-1: #ffffff;
+  --gradient-light-2: #f2fff2;
+  --gradient-light-3: #ebffeb;
+  --gradient-light-4: #f8fff8;
+
+  --theme-scanner-grid-color: rgba(34, 197, 94, 0.03);
+  --theme-scanner-line-color: rgba(34, 197, 94, 0.4);
+
+  --theme-shadow-primary: rgba(34, 197, 94, 0.25);
+  --theme-shadow-secondary: rgba(34, 197, 94, 0.1);
+  --theme-shadow-tertiary: rgba(34, 197, 94, 0.06);
+}
+
+html.theme-blue {
+  --color-red-300: #7dd3fc;
+  --color-red-400: #38bdf8;
+  --color-red-500: #0ea5e9;
+  --color-red-650: #0284c7;
+  --color-red-600: #0284c7;
+  --color-red-700: #0369a1;
+  --color-red-800: #075985;
+  --color-red-900: #0c4a6e;
+  --color-red-950: #082f49;
+
+  --theme-red-300-light: #0c4a6e;
+  --theme-red-400-light: #0284c7;
+  --theme-red-500-light: #0369a1;
+
+  --gradient-dark-1: #000000;
+  --gradient-dark-2: #040420;
+  --gradient-dark-3: #01010a;
+
+  --gradient-light-1: #ffffff;
+  --gradient-light-2: #f2f2ff;
+  --gradient-light-3: #ebebff;
+  --gradient-light-4: #f8f8ff;
+
+  --theme-scanner-grid-color: rgba(14, 165, 233, 0.03);
+  --theme-scanner-line-color: rgba(14, 165, 233, 0.4);
+
+  --theme-shadow-primary: rgba(14, 165, 233, 0.35);
+  --theme-shadow-secondary: rgba(14, 165, 233, 0.15);
+  --theme-shadow-tertiary: rgba(14, 165, 233, 0.06);
+}
+
+html.theme-yellow {
+  --color-red-300: #fde047;
+  --color-red-400: #facc15;
+  --color-red-500: #eab308;
+  --color-red-650: #ca8a04;
+  --color-red-600: #ca8a04;
+  --color-red-700: #a16207;
+  --color-red-800: #854d0e;
+  --color-red-900: #713f12;
+  --color-red-950: #422006;
+
+  --theme-red-300-light: #713f12;
+  --theme-red-400-light: #ca8a04;
+  --theme-red-500-light: #a16207;
+
+  --gradient-dark-1: #000000;
+  --gradient-dark-2: #1a1a02;
+  --gradient-dark-3: #080801;
+
+  --gradient-light-1: #ffffff;
+  --gradient-light-2: #fffff0;
+  --gradient-light-3: #ffffe0;
+  --gradient-light-4: #fffff8;
+
+  --theme-scanner-grid-color: rgba(234, 179, 8, 0.03);
+  --theme-scanner-line-color: rgba(234, 179, 8, 0.4);
+
+  --theme-shadow-primary: rgba(234, 179, 8, 0.35);
+  --theme-shadow-secondary: rgba(234, 179, 8, 0.15);
+  --theme-shadow-tertiary: rgba(234, 179, 8, 0.06);
+}
+
+.theme-glow-btn {
+  box-shadow: 0 0 15px var(--theme-shadow-primary, rgba(185, 28, 28, 0.25));
+}
+.theme-glow-sm {
+  box-shadow: 0 0 12px var(--theme-shadow-secondary, rgba(239, 68, 68, 0.1));
+}
+.theme-glow-xs {
+  box-shadow: 0 0 10px var(--theme-shadow-tertiary, rgba(185, 28, 28, 0.06));
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* Light Mode Core Visual Overrides */
+html:not(.dark) {
+  --background: oklch(0.985 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+}
+
+html:not(.dark) body {
+  background: linear-gradient(135deg, var(--gradient-light-1, #ffffff) 0%, var(--gradient-light-2, #fff2f2) 40%, var(--gradient-light-3, #ffebeb) 70%, var(--gradient-light-4, #fff8f8) 100%) no-repeat fixed !important;
+  color: #18181b !important;
+}
+
+html:not(.dark) .bg-custom-gradient {
+  background: linear-gradient(135deg, var(--gradient-light-1, #ffffff) 0%, var(--gradient-light-2, #fff2f2) 40%, var(--gradient-light-3, #ffebeb) 70%, var(--gradient-light-4, #fff8f8) 100%) no-repeat fixed !important;
+}
+
+html:not(.dark) .bg-\[\#0a0a0a\],
+html:not(.dark) .bg-\[\#080808\] {
+  background-color: #f4f4f7 !important;
+}
+
+html:not(.dark) .bg-\[\#0c0c0c\] {
+  background-color: #ffffff !important;
+}
+
+html:not(.dark) .bg-\[\#0a0a0a\]\/50 {
+  background-color: rgba(228, 228, 231, 0.35) !important;
+}
+
+html:not(.dark) .bg-\[\#0c0c0c\]\/40 {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+html:not(.dark) .bg-\[\#0a0a0a\]\/80 {
+  background-color: rgba(250, 250, 252, 0.8) !important;
+}
+
+/* Base UI & customized Card overrides */
+html:not(.dark) .border,
+html:not(.dark) .border-zinc-800\/40,
+html:not(.dark) .border-zinc-800\/30,
+html:not(.dark) .border-zinc-805\/40,
+html:not(.dark) .border-zinc-800\/50,
+html:not(.dark) .border-zinc-800 {
+  border-color: rgba(228, 228, 231, 0.9) !important;
+}
+
+/* Custom text colors */
+html:not(.dark) .text-white,
+html:not(.dark) .text-zinc-100,
+html:not(.dark) .text-zinc-200 {
+  color: #09090b !important;
+}
+
+html:not(.dark) .text-zinc-300 {
+  color: #27272a !important; /* zinc-800 for deep, legible gray */
+}
+
+html:not(.dark) .text-zinc-350,
+html:not(.dark) .text-zinc-400 {
+  color: #3f3f46 !important; /* zinc-700 for better contrast on white backgrounds */
+}
+
+html:not(.dark) .text-zinc-500 {
+  color: #71717a !important; /* zinc-500 */
+}
+
+html:not(.dark) .text-red-500 {
+  color: var(--theme-red-500-light, #991b1b) !important; /* red-800 for high-contrast red */
+}
+
+html:not(.dark) .text-red-400 {
+  color: var(--theme-red-400-light, #b91c1c) !important; /* red-700 for a bold, highly readable crimson in light mode */
+}
+
+html:not(.dark) .text-red-300 {
+  color: var(--theme-red-300-light, #7f1d1d) !important; /* red-900 for clear input/command text */
+}
+
+html:not(.dark) .text-yellow-500 {
+  color: #b45309 !important; /* amber-700/yellow-800 for high-contrast warnings */
+}
+
+/* Forms override */
+html:not(.dark) input,
+html:not(.dark) textarea {
+  background-color: #ffffff !important;
+  color: #09090b !important;
+  border-color: rgba(228, 228, 231, 1) !important;
+}
+
+html:not(.dark) input::placeholder,
+html:not(.dark) textarea::placeholder {
+  color: #a1a1aa !important;
+}
+
+/* Override absolute background glow and scanlines */
+html:not(.dark) .bg-radial-gradient {
+  opacity: 0.05 !important;
+}
+
+html:not(.dark) .scanner-grid {
+  opacity: 1 !important;
+  background-image: linear-gradient(to right, var(--theme-scanner-grid-color, rgba(220, 38, 38, 0.02)) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--theme-scanner-grid-color, rgba(220, 38, 38, 0.02)) 1px, transparent 1px) !important;
+}
+
+/* Tooltips */
+html:not(.dark) [data-slot="tooltip-content"],
+html:not(.dark) .bg-zinc-950 {
+  background-color: #ffffff !important;
+  border-color: rgba(228, 228, 231, 1) !important;
+  color: #09090b !important;
+}

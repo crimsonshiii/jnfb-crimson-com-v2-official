@@ -78,7 +78,7 @@ export default function App() {
   // Simulated typing effect for header sub-items
   const [typedTitle, setTypedTitle] = useState('');
   const [titleIndex, setTitleIndex] = useState(0);
-  const coreRoles = ["Front-End Dev", "UI/UX Designer", "Horror Game Streamer"];
+  const coreRoles = ["Front-End Developer", "UI/UX Designer", "Graphic Designer", "Horror Game Streamer"];
 
   useEffect(() => {
     let currentRole = coreRoles[titleIndex];

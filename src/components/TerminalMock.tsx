@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Terminal as TerminalIcon, ShieldAlert, Cpu, Check, CornerDownLeft, Volume2 } from 'lucide-react';
+import { Terminal as TerminalIcon, ShieldAlert, Cpu, Check, CornerDownLeft, Volume2, Clock, Award } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { jnfbProfile, jnfbProjects } from '../data';
+import { jnfbProfile, jnfbProjects, jnfbExperience, jnfbAchievements, jnfbCertifications } from '../data';
 
 interface CommandOutput {
   text: string;
@@ -45,6 +45,8 @@ export default function TerminalMock() {
           { text: "  profile      - Fetch reagent Jao Nicholas's comprehensive parameters", type: "success" },
           { text: "  skills       - Quantify full-stack software and design masteries", type: "success" },
           { text: "  projects     - Query operational catalog (academic + personal)", type: "success" },
+          { text: "  timeline     - View chronological professional trajectory & internships", type: "success" },
+          { text: "  honors       - List certifications, academic awards & student leadership", type: "success" },
           { text: "  overclock    - Push CPU state to maximum crimson frequency", type: "warning" },
           { text: "  clear        - Flush terminal buffer", type: "system" }
         );
@@ -72,10 +74,37 @@ export default function TerminalMock() {
       case 'projects':
         newHistory.push(
           { text: "OPERATIONAL RUNTIME MODULES DEPLOYED:", type: "success" },
-          { text: "  - CIC Submission Portal: Core Submission Portal [Next.js + Supabase]", type: "system" },
-          { text: "  - EmpowerPath: Job Recommendation Engine [Laravel + PHP]", type: "system" },
-          { text: "  - CrimsonSkillBoost: The CS Academic Hub [CodeIgniter + Java]", type: "system" },
-          { text: "  - Objection, Overruled!: Legal Courtroom Sim [C# + Unity]", type: "system" }
+          ...jnfbProjects.map(p => ({
+            text: `  - ${p.name} [${p.techStack.join(', ')}]`,
+            type: 'system' as const
+          }))
+        );
+        break;
+      case 'timeline':
+        newHistory.push(
+          { text: "CHRONOLOGICAL PROFESSIONAL TRAJECTORY:", type: "success" },
+          ...jnfbExperience.flatMap(exp => [
+            { text: `  Role:        ${exp.role} (${exp.type})`, type: "system" as const },
+            { text: `  Entity:      ${exp.company} // [${exp.duration}]`, type: "system" as const },
+            { text: `  Location:    ${exp.location}`, type: "system" as const },
+            ...exp.bullets.map(b => ({ text: `    • ${b}`, type: "system" as const })),
+            { text: `  `, type: "system" as const }
+          ])
+        );
+        break;
+      case 'honors':
+        newHistory.push(
+          { text: "PROFESSIONAL CREDENTIALS & CERTIFICATIONS:", type: "success" },
+          ...jnfbCertifications.map(cert => ({
+            text: `  [CERT] ${cert.title} — ${cert.issuer} (${cert.year})`,
+            type: "system" as const
+          })),
+          { text: `  `, type: "system" as const },
+          { text: "ACADEMIC AWARDS & STUDENT LEADERSHIP:", type: "success" },
+          ...jnfbAchievements.map(ach => ({
+            text: `  [AWARD] ${ach.title} — ${ach.subtitle} [${ach.year}]`,
+            type: "system" as const
+          }))
         );
         break;
       case 'overclock':
@@ -188,7 +217,7 @@ export default function TerminalMock() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               className="flex-1 bg-transparent border-none outline-none text-red-300 focus:ring-0 font-mono caret-red-500"
-              placeholder="type 'help', 'profile', or 'skills'..."
+              placeholder="type 'help', 'timeline', 'honors'..."
               autoComplete="off"
               spellCheck="false"
             />
@@ -207,7 +236,7 @@ export default function TerminalMock() {
           <span className="bg-[#0c0c0c] px-1 py-0.5 rounded text-zinc-400 ml-2 border border-zinc-800/40">Del</span>
           <span>Wipe Shell</span>
         </div>
-        <div className="flex space-x-2 font-mono text-[11px]">
+        <div className="flex space-x-2 font-mono text-[11px] flex-wrap items-center gap-y-1.5">
           <button
             onClick={() => {
               setHistory(h => [...h, { text: `user@crimsonshiii:~$ profile`, type: 'input' }, { text: "REAGENT SPECS: " + jnfbProfile.name.toUpperCase(), type: "success" }, { text: `  Role:        ${jnfbProfile.title}`, type: "system" }, { text: `  Age:         ${jnfbProfile.age} (${jnfbProfile.birthDate})`, type: "system" }, { text: `  Address:     ${jnfbProfile.address}`, type: "system" }]);
@@ -220,12 +249,57 @@ export default function TerminalMock() {
           <span className="text-zinc-800">|</span>
           <button
             onClick={() => {
-              setHistory(h => [...h, { text: `user@crimsonshiii:~$ projects`, type: 'input' }, { text: "OPERATIONAL RUNTIME MODULES DEPLOYED:", type: "success" }, ...jnfbProjects.map(p => ({ text: `  - ${p.name} [${p.techStack.slice(0, 3).join(', ')}]`, type: 'system' as const }))]);
+              setHistory(h => [...h, { text: `user@crimsonshiii:~$ projects`, type: 'input' }, { text: "OPERATIONAL RUNTIME MODULES DEPLOYED:", type: "success" }, ...jnfbProjects.map(p => ({ text: `  - ${p.name} [${p.techStack.join(', ')}]`, type: 'system' as const }))]);
             }}
             className="text-zinc-400 hover:text-red-400 hover:underline transition-all flex items-center gap-1"
           >
             <Check className="w-3.5 h-3.5 text-green-500" />
             [02_DIAG_PROJECTS]
+          </button>
+          <span className="text-zinc-800">|</span>
+          <button
+            onClick={() => {
+              setHistory(h => [
+                ...h,
+                { text: `user@crimsonshiii:~$ timeline`, type: 'input' },
+                { text: "CHRONOLOGICAL PROFESSIONAL TRAJECTORY:", type: "success" },
+                ...jnfbExperience.flatMap(exp => [
+                  { text: `  Role:        ${exp.role} (${exp.type})`, type: "system" as const },
+                  { text: `  Entity:      ${exp.company} // [${exp.duration}]`, type: "system" as const },
+                  { text: `  Location:    ${exp.location}`, type: "system" as const },
+                  ...exp.bullets.map(b => ({ text: `    • ${b}`, type: "system" as const })),
+                  { text: `  `, type: "system" as const }
+                ])
+              ]);
+            }}
+            className="text-zinc-400 hover:text-red-400 hover:underline transition-all flex items-center gap-1"
+          >
+            <Clock className="w-3.5 h-3.5 text-yellow-500" />
+            [03_DIAG_TIMELINE]
+          </button>
+          <span className="text-zinc-800">|</span>
+          <button
+            onClick={() => {
+              setHistory(h => [
+                ...h,
+                { text: `user@crimsonshiii:~$ honors`, type: 'input' },
+                { text: "PROFESSIONAL CREDENTIALS & CERTIFICATIONS:", type: "success" },
+                ...jnfbCertifications.map(cert => ({
+                  text: `  [CERT] ${cert.title} — ${cert.issuer} (${cert.year})`,
+                  type: "system" as const
+                })),
+                { text: `  `, type: "system" as const },
+                { text: "ACADEMIC AWARDS & STUDENT LEADERSHIP:", type: "success" },
+                ...jnfbAchievements.map(ach => ({
+                  text: `  [AWARD] ${ach.title} — ${ach.subtitle} [${ach.year}]`,
+                  type: "system" as const
+                }))
+              ]);
+            }}
+            className="text-zinc-400 hover:text-red-400 hover:underline transition-all flex items-center gap-1"
+          >
+            <Award className="w-3.5 h-3.5 text-blue-500" />
+            [04_DIAG_HONORS]
           </button>
         </div>
       </div>

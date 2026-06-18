@@ -256,8 +256,8 @@ export const jnfbExperience: Experience[] = [
     ]
   },
   {
-    id: "youtube-freelance",
-    role: "Freelance Content Creator & Livestreamer",
+    id: "youtube-independent",
+    role: "Independent Gaming Content Creator",
     company: "YouTube / Remote Creator Modality",
     type: "Remote Creative Modality",
     duration: "Jan 2026 - Present",

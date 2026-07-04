@@ -37,7 +37,7 @@ import EducationCard from './components/EducationCard';
 import ExperienceCard from './components/ExperienceCard';
 import AchievementsAndCertificationsCard from './components/AchievementsAndCertificationsCard';
 import Header from './components/Header';
-import profilePic from './assets/images/BENEDICTO_ID PIC.png';
+import profilePic from './assets/images/45_BENECDICTO_NICHOLAS_10.jpg';
 import { TooltipProvider } from '@/components/ui/tooltip';
 
 export default function App() {
@@ -211,7 +211,16 @@ export default function App() {
               <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-red-700 via-red-600 to-amber-600 opacity-45 blur-md group-hover:opacity-85 transition duration-1000 group-hover:duration-200" />
               
               {/* Profile Avatar Container with scanlines */}
-              <div className="relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-[#0c0c0c] border-4 border-zinc-800/40 overflow-hidden flex flex-col items-center justify-center">
+              <div 
+                className="relative w-48 h-48 md:w-56 md:h-56 rounded-full bg-[#0c0c0c] overflow-hidden flex flex-col items-center justify-center"
+                style={{
+                  transform: 'translate3d(0, 0, 0)',
+                  WebkitTransform: 'translate3d(0, 0, 0)',
+                  maskImage: 'radial-gradient(circle, white 99%, transparent 100%)',
+                  WebkitMaskImage: '-webkit-radial-gradient(white, black)',
+                  isolation: 'isolate'
+                }}
+              >
                 <div className="scanner-line pointer-events-none opacity-40 z-10" />
                 
                 {/* Jao Nicholas portrait photo replaced as per user request */}
@@ -219,8 +228,19 @@ export default function App() {
                   src={profilePic}
                   alt="Jao Nicholas F. Benedicto"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-cover object-[center_20%] scale-[1.03] transition-transform duration-500 group-hover:scale-110"
+                  style={{ 
+                    imageRendering: 'auto', 
+                    transform: 'translate3d(0, 0, 0)',
+                    WebkitTransform: 'translate3d(0, 0, 0)',
+                    backfaceVisibility: 'hidden',
+                    WebkitBackfaceVisibility: 'hidden',
+                    willChange: 'transform'
+                  }}
                 />
+
+                {/* Tactical Overlaid Border to prevent subpixel edge bleeding */}
+                <div className="absolute inset-0 border-4 border-zinc-800/40 rounded-full pointer-events-none z-20" />
               </div>
             </div>
 

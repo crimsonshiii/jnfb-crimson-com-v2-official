@@ -185,7 +185,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Modern Sci-Fi Tactical Project Specifications Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-12 md:pt-24 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-20 sm:pt-24 md:pt-32 overflow-y-auto">
             {/* Backdrop Blur overlay */}
             <motion.div
               initial={{ opacity: 0 }}

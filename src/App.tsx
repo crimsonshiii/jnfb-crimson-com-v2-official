@@ -428,23 +428,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* DETAILED SKILL MATRIX DASHBOARD */}
-        <section id="skills" className="scroll-mt-20 space-y-6">
-          <div className="border-b border-zinc-800/40 pb-3 flex items-center justify-between">
-            <h2 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
-              <Cpu className="w-6 h-6 text-red-500" />
-              Technical Skill Matrix
-            </h2>
-            <span className="font-mono text-xs text-zinc-500">ENGINE_STATS // v3.5</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {jnfbSkills.map((category, catIdx) => (
-              <SkillCard key={catIdx} category={category} catIdx={catIdx} />
-            ))}
-          </div>
-        </section>
-
         {/* CAREER TIMELINE WITH SPECIAL FOCUS ON YOUTUBE & DEPLOYMENTS */}
         <section id="experience" className="scroll-mt-20 space-y-6">
           <div className="border-b border-zinc-800/40 pb-3 flex items-center justify-between">
@@ -458,6 +441,23 @@ export default function App() {
           <div className="space-y-8 max-w-4xl mx-auto">
             {jnfbExperience.map((job) => (
               <ExperienceCard key={job.id} job={job} />
+            ))}
+          </div>
+        </section>
+
+        {/* DETAILED SKILL MATRIX DASHBOARD */}
+        <section id="skills" className="scroll-mt-20 space-y-6">
+          <div className="border-b border-zinc-800/40 pb-3 flex items-center justify-between">
+            <h2 className="text-2xl font-bold tracking-tight text-white flex items-center gap-2">
+              <Cpu className="w-6 h-6 text-red-500" />
+              Technical Skill Matrix
+            </h2>
+            <span className="font-mono text-xs text-zinc-500">ENGINE_STATS // v3.5</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {jnfbSkills.map((category, catIdx) => (
+              <SkillCard key={catIdx} category={category} catIdx={catIdx} />
             ))}
           </div>
         </section>

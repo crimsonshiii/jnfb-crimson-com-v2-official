@@ -1,6 +1,5 @@
 import React from 'react';
 import { Activity } from 'lucide-react';
-import { motion } from 'motion/react';
 import { SkillCategory } from '../data';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -28,29 +27,15 @@ export default function SkillCard({ category, catIdx }: SkillCardProps) {
       <div className="space-y-4">
         {category.skills.map((skill, sIdx) => {
           const content = (
-            <div className="space-y-1.5 group select-none w-full text-left">
-              <div className="flex justify-between items-center text-xs font-mono">
+            <div className="space-y-1 group select-none w-full text-left">
+              <div className="flex items-center text-xs font-mono">
                 <span className="text-zinc-300 font-semibold group-hover:text-red-500 transition-colors cursor-help">
-                  {skill.name}
+                  • {skill.name}
                 </span>
-                <span className="text-red-500 font-bold font-mono">
-                  {skill.level}%
-                </span>
-              </div>
-              
-              {/* Skill percentage bar tracker */}
-              <div className="h-1.5 w-full bg-[#0a0a0a] rounded-full overflow-hidden border border-zinc-800/30">
-                <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: sIdx * 0.05 }}
-                  className="h-full bg-gradient-to-r from-red-700 to-rose-600 rounded-full shadow-[0_0_8px_rgba(185,28,28,0.2)]"
-                />
               </div>
 
               {skill.info && (
-                <p className="text-[10px] text-zinc-500 group-hover:text-zinc-400 block transition-colors pt-0.5 leading-snug">
+                <p className="text-[10px] text-zinc-500 group-hover:text-zinc-400 block transition-colors pl-3 leading-snug">
                   {skill.info}
                 </p>
               )}

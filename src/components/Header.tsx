@@ -68,13 +68,13 @@ export default function Header({
             <span className="xl:hidden">[02_PROJ]</span>
             <span className="hidden xl:inline">[02_PROJECTS]</span>
           </a>
-          <a href="#skills" onClick={() => playBeep(540, 'sine', 0.05)} className="hover:text-white transition-colors" title="Skills">
-            <span className="xl:hidden">[03_SKIL]</span>
-            <span className="hidden xl:inline">[03_SKILLS]</span>
+          <a href="#experience" onClick={() => playBeep(540, 'sine', 0.05)} className="hover:text-white transition-colors" title="Timeline">
+            <span className="xl:hidden">[03_TIME]</span>
+            <span className="hidden xl:inline">[03_TIMELINE]</span>
           </a>
-          <a href="#experience" onClick={() => playBeep(560, 'sine', 0.05)} className="hover:text-white transition-colors" title="Timeline">
-            <span className="xl:hidden">[04_TIME]</span>
-            <span className="hidden xl:inline">[04_TIMELINE]</span>
+          <a href="#skills" onClick={() => playBeep(560, 'sine', 0.05)} className="hover:text-white transition-colors" title="Skills">
+            <span className="xl:hidden">[04_SKIL]</span>
+            <span className="hidden xl:inline">[04_SKILLS]</span>
           </a>
           <a href="#achievements" onClick={() => playBeep(580, 'sine', 0.05)} className="hover:text-white transition-colors" title="Honors">
             <span className="xl:hidden">[05_HONO]</span>
@@ -241,7 +241,7 @@ export default function Header({
                       <span className="text-[10px] text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                     </a>
                     <a
-                      href="#skills"
+                      href="#experience"
                       onClick={() => {
                         playBeep(540, 'sine', 0.05);
                         setIsOpen(false);
@@ -252,11 +252,11 @@ export default function Header({
                           : 'text-zinc-400 hover:text-white border-zinc-800/20'
                       }`}
                     >
-                      <span>[03_SKILLS]</span>
+                      <span>[03_TIMELINE]</span>
                       <span className="text-[10px] text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                     </a>
                     <a
-                      href="#experience"
+                      href="#skills"
                       onClick={() => {
                         playBeep(560, 'sine', 0.05);
                         setIsOpen(false);
@@ -267,7 +267,7 @@ export default function Header({
                           : 'text-zinc-400 hover:text-white border-zinc-800/20'
                       }`}
                     >
-                      <span>[04_TIMELINE]</span>
+                      <span>[04_SKILLS]</span>
                       <span className="text-[10px] text-red-500 opacity-0 group-hover:opacity-100 transition-opacity">→</span>
                     </a>
                     <a

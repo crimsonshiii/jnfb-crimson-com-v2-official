@@ -19,7 +19,7 @@ export default function EducationCard() {
               <p className="text-xs text-red-500 font-mono font-bold">Bachelor of Science in Computer Science</p>
             </div>
             <span className="font-mono text-[10px] tracking-wider uppercase bg-[#0a0a0a] px-2 py-0.5 rounded border border-zinc-800/50 text-zinc-400">
-              2022 - Present
+              2022 - 2026
             </span>
           </div>
           <p className="text-xs text-zinc-500 mb-1">J.P. Rizal, Extension, West Rembo, Taguig City</p>

@@ -103,12 +103,11 @@ export const jnfbProjects: Project[] = [
     role: "UI/UX Desiner / Researcher / Front End Developer",
     techStack: ["Next.js", "React.js", "Tailwind CSS", "Supabase"],
     duration: "2025-Present",
-    description: "A comprehensive Job Recommendation System designed to match user profiles with ideal job positions dynamically using Laravel and custom matching algorithms.",
+    description: "A comprehensive Submission Portal as part of the internship project designed to the UMak Center for Integrated Communications (CIC) following the UMak Branding Guidelines with the responsive layouts and design",
     bullets: [
-      "Led a team of 4 scholars & developers in designing the architectural blueprint of the job recommendation pipeline.",
-      "Designed and implemented the core user-friendly front-end interface, creating beautiful forms and high-contrast tables using AlpineJS and Tailwind CSS.",
-      "Successfully conducted end-to-end quality and regression testing, ensuring seamless user flow from questionnaire to matches.",
-      "Authored major documentation blocks including Chapters 1 to 5, establishing clear software requirements and methodology."
+      "Led a team of 3 student developers and 1 admin in designing the architectural blueprint of the submssion portal",
+      "Designed and implemented the core user-friendly user interface, creating beautiful forms and high-contrast tables using Figma and the technologies (Next.js and Tailwind CSS)",
+      "Successfully conducted end-to-end quality and regression testing, ensuring seamless user flow from sign in until the creating requests through the forms."
     ],
     teamSize: 4,
     platforms: ["Web Application"],

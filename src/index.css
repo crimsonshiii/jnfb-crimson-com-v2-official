@@ -55,10 +55,18 @@
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+html:not(.dark) {
+  background-color: #ffffff;
 }
 
 body {
-  background: linear-gradient(135deg, var(--gradient-dark-1, #000000) 0%, var(--gradient-dark-2, #200404) 45%, var(--gradient-dark-3, #0a0101) 75%, var(--gradient-dark-1, #000000) 100%) no-repeat fixed;
+  background-color: #000000;
+  background-image: linear-gradient(135deg, var(--gradient-dark-1, #000000) 0%, var(--gradient-dark-2, #200404) 45%, var(--gradient-dark-3, #0a0101) 75%, var(--gradient-dark-1, #000000) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   color: #f4f4f5;
   overflow-x: hidden;
   font-family: var(--font-sans);

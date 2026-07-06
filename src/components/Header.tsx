@@ -122,22 +122,22 @@ export default function Header({
               playBeep(600, 'sine', 0.08);
               setIsLightMode(!isLightMode);
             }}
-            className={`p-2 rounded-lg border transition-all flex items-center justify-center gap-1.5 ${
+            className={`p-2 rounded-lg border transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
               isLightMode
-                ? 'bg-amber-500/10 text-amber-600 border-amber-500/30 hover:bg-amber-500/20 shadow-[0_0_10px_rgba(245,158,11,0.15)]'
-                : 'bg-zinc-900/50 text-zinc-400 border-zinc-800 hover:text-zinc-200'
+                ? 'bg-zinc-900 text-white-force border-zinc-800 hover:bg-zinc-800 shadow-sm'
+                : 'bg-amber-500/10 text-amber-500 border-amber-500/30 hover:bg-amber-500/20 hover:text-amber-400 shadow-[0_0_10px_rgba(245,158,11,0.15)]'
             }`}
-            title="Toggle Light / Dark Mode"
+            title={isLightMode ? "Switch to Dark Mode" : "Switch to Light Mode"}
           >
             {isLightMode ? (
               <>
-                <Sun className="w-4 h-4 text-amber-500" />
-                <span className="font-mono text-[9px] uppercase font-bold tracking-widest hidden xl:inline whitespace-nowrap">Light</span>
+                <Moon className="w-4 h-4 text-white-force" />
+                <span className="font-mono text-[9px] uppercase font-bold tracking-widest hidden xl:inline whitespace-nowrap text-white-force">Dark</span>
               </>
             ) : (
               <>
-                <Moon className="w-4 h-4 text-zinc-400" />
-                <span className="font-mono text-[9px] uppercase font-bold tracking-widest hidden xl:inline whitespace-nowrap">Dark</span>
+                <Sun className="w-4 h-4 text-amber-500 animate-spin-slow" />
+                <span className="font-mono text-[9px] uppercase font-bold tracking-widest hidden xl:inline whitespace-nowrap">Light</span>
               </>
             )}
           </button>

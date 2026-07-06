@@ -453,3 +453,7 @@ html:not(.dark) .bg-zinc-950 {
   border-color: rgba(228, 228, 231, 1) !important;
   color: #09090b !important;
 }
+
+.text-white-force {
+  color: #ffffff !important;
+}

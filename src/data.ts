@@ -111,8 +111,8 @@ export const jnfbProjects: Project[] = [
     ],
     teamSize: 4,
     platforms: ["Web Application"],
-    githubLink: "https://github.com/crimsonshiii/cic-submission-portal",
-    websiteLink: "https://crimsonshiii.github.io/cic-submission-portal"
+    githubLink: "https://github.com/Jerine18/cic-webapp",
+    websiteLink: "https://cic-webapp-sigma.vercel.app/"
   },
   {
     id: "empowerpath",
@@ -130,8 +130,8 @@ export const jnfbProjects: Project[] = [
     ],
     teamSize: 4,
     platforms: ["Web Application"],
-    githubLink: "https://github.com/crimsonshiii/EmpowerPath",
-    websiteLink: "https://crimsonshiii.github.io/EmpowerPath"
+    githubLink: "https://github.com/FlamerYeeter/MyVerySpecialGuide",
+    // websiteLink: "https://crimsonshiii.github.io/EmpowerPath"
   },
   {
     id: "crimsonskillboost",
@@ -148,8 +148,8 @@ export const jnfbProjects: Project[] = [
       "Built rigorous documentation outlining the project charter, custom user stories, and comprehensive functional requirements trees."
     ],
     teamSize: 5,
-    platforms: ["Mobile App", "Web Portal"],
-    githubLink: "https://github.com/crimsonshiii/CrimsonSkillBoost"
+    platforms: ["Mobile & Web Application"],
+    githubLink: "https://github.com/crimsonshiii/CrimsonSkillBoost-Web"
   },
   {
     id: "objection-overruled",
@@ -166,8 +166,8 @@ export const jnfbProjects: Project[] = [
       "Led documentation workflows creating user stories, case mechanics sheets, and functional specification frameworks."
     ],
     teamSize: 5,
-    platforms: ["Mobile Game (Android/iOS)"],
-    githubLink: "https://github.com/crimsonshiii/objection-overruled"
+    platforms: ["Mobile Game"],
+    githubLink: "https://github.com/crimsonshiii/ObjectionOverruledVersion1"
   },
   {
     id: "crimson-library",
@@ -183,8 +183,8 @@ export const jnfbProjects: Project[] = [
       "Executed user acceptance tests (UAT) and interface benchmarks to verify instantaneous search and query performance on local caches."
     ],
     teamSize: 4,
-    platforms: ["Desktop App (Windows/DirectX)"],
-    githubLink: "https://github.com/crimsonshiii/crimson-library-system"
+    platforms: ["Desktop Application"],
+    githubLink: "https://github.com/crimsonshiii/LibraryManagementSystem"
   },
   // Personal Projects
   {
@@ -200,9 +200,9 @@ export const jnfbProjects: Project[] = [
       "Modeled accurate challenge lists and trial tracking components with search filters, dynamic status reports, and responsive retro grids.",
       "Incorporated rich audio cues and custom static noise filters imitating vintage cathode ray tube (CRT) monitor displays."
     ],
-    platforms: ["Web Dashboard App"],
-    githubLink: "https://github.com/crimsonshiii/murkoff-therapy-terminal",
-    websiteLink: "https://crimsonshiii.github.io/murkoff-therapy-terminal"
+    platforms: ["Web Application"],
+    githubLink: "https://github.com/crimsonshiii/the-outlast-trials-murkoff-therapy-terminal-v1",
+    websiteLink: "https://the-outlast-trials-murkoff-therapy.vercel.app/"
   },
   {
     id: "jnfb-portfolio",
@@ -217,9 +217,9 @@ export const jnfbProjects: Project[] = [
       "Configured consistent dark-slate style architectures interspersed with rich primary crimson branding notes.",
       "Designed a smart diagnostic console contact utility, receiving real-time logs and user messages on local sandbox states."
     ],
-    platforms: ["Responsive Web Platform"],
-    githubLink: "https://github.com/crimsonshiii/jnfb-portfolio",
-    websiteLink: "https://crimsonshiii.github.io/portfolio"
+    platforms: ["Web Portfolio"],
+    githubLink: "https://github.com/crimsonshiii/jnfb-crimson-com-v2-official",
+    websiteLink: "https://jnfb-crimson-com-v2-official.vercel.app/"
   },
   {
     id: "jnfb-cloudvault",
@@ -234,9 +234,9 @@ export const jnfbProjects: Project[] = [
       "Implemented a file-system explorer UI displaying interactive PDF summaries and live system reports.",
       "Formatted custom dashboards to display resource tracking, billing projections, and cluster architectures visually."
     ],
-    platforms: ["Web Dashboard App"],
-    githubLink: "https://github.com/crimsonshiii/jnfb-cloudvault",
-    websiteLink: "https://crimsonshiii.github.io/jnfb-cloudvault"
+    platforms: ["Web Portfolio"],
+    githubLink: "https://github.com/crimsonshiii/jnfb-cloud-vault-v1-official",
+    websiteLink: "https://jnfb-cloud-vault-v1-official.vercel.app/"
   },
 ];
 

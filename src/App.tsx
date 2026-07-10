@@ -318,7 +318,7 @@ export default function App() {
               </a>
 
               <a
-                href="/BENEDICTO, JAO NICHOLAS - CURRICULUM VITAE (V1).pdf"
+                href="/BENEDICTO, JAO NICHOLAS - CURRICULUM VITAE (V2).pdf"
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => playBeep(700, 'sine', 0.1)}

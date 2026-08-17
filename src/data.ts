@@ -351,6 +351,13 @@ export const jnfbAchievements: Achievement[] = [
 
 export const jnfbCertifications: Certification[] = [
   {
+    id: "tesda-ddui",
+    title: "Developing Designs for User Interface (TESDA Online Program)",
+    issuer: "TESDA",
+    location: "Taguig City, Metro Manila",
+    year: "2026"
+  },
+  {
     id: "hr-js-intermediate",
     title: "JavaScript (Intermediate) Certificate",
     issuer: "HackerRank",
@@ -378,11 +385,4 @@ export const jnfbCertifications: Certification[] = [
     location: "Taguig City, Metro Manila",
     year: "2025"
   },
-  {
-    id: "simplilearn-ml",
-    title: "Machine Learning using Python Certificate",
-    issuer: "Simplilearn SkillUp",
-    location: "Taguig City, Metro Manila",
-    year: "2025"
-  }
 ];

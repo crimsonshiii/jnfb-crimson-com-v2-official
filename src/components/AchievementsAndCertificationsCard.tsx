@@ -216,7 +216,7 @@ export default function AchievementsAndCertificationsCard() {
       {/* Modern Sci-Fi Tactical Certification Specification Modal */}
       <AnimatePresence>
         {selectedCert && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-16 sm:pt-20 pb-6 overflow-y-auto">
             {/* Backdrop Blur overlay */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -232,7 +232,7 @@ export default function AchievementsAndCertificationsCard() {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.94, opacity: 0, y: 15 }}
               transition={{ type: "spring", duration: 0.4, bounce: 0.12 }}
-              className="relative w-full max-w-2xl bg-[#0b0b0b] border border-[#dc2626]/30 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.15)] flex flex-col max-h-[88vh] z-10"
+              className="relative w-full max-w-2xl bg-[#0b0b0b] border border-[#dc2626]/30 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.15)] flex flex-col max-h-[82vh] sm:max-h-[84vh] z-10"
             >
               {/* Top ambient color accent line */}
               <div className="absolute top-0 left-0 right-0 h-1 z-30 bg-gradient-to-r from-red-800 via-red-600 to-amber-600" />
@@ -430,14 +430,14 @@ export default function AchievementsAndCertificationsCard() {
 
                   {selectedCert.credentialUrl && (
                     <a
-                      href={selectedCert.credentialUrl}
+                      href={encodeURI(selectedCert.credentialUrl)}
                       target="_blank"
                       rel="noreferrer"
                       onClick={() => playLocalBeep(600, 'sine', 0.08)}
                       className="px-3 py-2 rounded-md bg-red-950/40 border border-red-900/40 hover:bg-red-900/40 hover:border-red-700/50 text-red-400 hover:text-red-300 font-mono text-xs font-bold flex items-center gap-1.5 transition-all"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      VERIFY CREDENTIAL
+                      {selectedCert.credentialUrl.toLowerCase().endsWith('.pdf') ? 'VIEW CERTIFICATE (PDF)' : 'VERIFY CREDENTIAL'}
                     </a>
                   )}
                 </div>

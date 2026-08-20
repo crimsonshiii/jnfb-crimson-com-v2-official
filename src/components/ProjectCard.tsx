@@ -185,7 +185,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       {/* Modern Sci-Fi Tactical Project Specifications Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pt-16 sm:pt-20 pb-6 overflow-y-auto">
             {/* Backdrop Blur overlay */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -201,7 +201,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.94, opacity: 0, y: 15 }}
               transition={{ type: "spring", duration: 0.4, bounce: 0.12 }}
-              className="relative w-full max-w-2xl bg-[#0b0b0b] border border-[#dc2626]/30 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.12)] flex flex-col max-h-[85vh] z-10"
+              className="relative w-full max-w-2xl bg-[#0b0b0b] border border-[#dc2626]/30 rounded-xl overflow-hidden shadow-[0_0_50px_rgba(220,38,38,0.12)] flex flex-col max-h-[82vh] sm:max-h-[84vh] z-10"
             >
               {/* Top accent line */}
               <div 

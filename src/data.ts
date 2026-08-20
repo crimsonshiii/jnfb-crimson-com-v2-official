@@ -367,7 +367,7 @@ export const jnfbCertifications: Certification[] = [
     year: "2026",
     issueDate: "August 20, 2026",
     credentialId: "6q4B6fIc8p",
-    credentialUrl: "/certifications/UX Design Certificate of Completion.pdf",
+    credentialUrl: "/public/certifications/UX Design Certificate of Completion.pdf",
     status: "Verified & Active",
     description: "Structured competency curriculum focused on User Experience (UX) design methodologies. Emphasizes user research methodologies, empathy mapping, persona development, user journey mapping, information architecture, low-fidelity wireframing, usability testing protocols, heuristic evaluations, and iterative user-centered design frameworks.",
     skills: ["UX Research", "User Personas", "User Journey Mapping", "Information Architecture", "Usability Testing", "Wireframing & Lo-Fi Prototyping", "Heuristic Evaluation", "User-Centered Design (UCD)"],

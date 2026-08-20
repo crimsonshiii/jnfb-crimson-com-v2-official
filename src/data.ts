@@ -323,14 +323,14 @@ export const jnfbAchievements: Achievement[] = [
   {
     id: "umak-sc-secretary",
     category: "organizational",
-    title: "UMak CCIS Student Council - Executive Secretary",
+    title: "UMak CCIS Student Council - Secretary",
     subtitle: "Took command of council document archives, agenda transcripts, and administrative channels.",
     year: "2023-2024"
   },
   {
     id: "umak-sc-logistics",
     category: "organizational",
-    title: "UMak CCIS Student Council - Logistics Staff",
+    title: "UMak CCIS Student Council - Logistics Commitee",
     subtitle: "Managed physical assets, equipment inventories, and staging structures for active academic events.",
     year: "2022-2023"
   },

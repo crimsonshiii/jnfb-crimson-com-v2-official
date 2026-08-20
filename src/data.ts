@@ -65,8 +65,16 @@ export interface Certification {
   id: string;
   title: string;
   issuer: string;
+  issuerFull?: string;
   location: string;
   year: string;
+  issueDate?: string;
+  description?: string;
+  skills?: string[];
+  credentialId?: string;
+  credentialUrl?: string;
+  status?: string;
+  modulesCovered?: string[];
 }
 
 export const jnfbProfile: Profile = {
@@ -102,7 +110,7 @@ export const jnfbProjects: Project[] = [
     type: "academic",
     role: "UI/UX Desiner / Researcher / Front End Developer",
     techStack: ["Next.js", "React.js", "Tailwind CSS", "Supabase"],
-    duration: "2025-Present",
+    duration: "February 2026-May 2026 (3 Months Development)",
     description: "A comprehensive Submission Portal as part of the internship project designed to the UMak Center for Integrated Communications (CIC) following the UMak Branding Guidelines with the responsive layouts and design",
     bullets: [
       "Member of a team of 5 student developers and 6 admins in designing the architectural blueprint of the submssion portal",
@@ -120,7 +128,7 @@ export const jnfbProjects: Project[] = [
     type: "academic",
     role: "Assistant Leader / Researcher",
     techStack: ["HTML", "CSS", "JS", "Tailwind CSS", "Laravel Framework", "PHP"],
-    duration: "2025-Present",
+    duration: "August 2025-May 2026 (9 Months Development)",
     description: "A comprehensive Job Recommendation System designed to match user profiles with ideal job positions dynamically using Laravel and custom matching algorithms.",
     bullets: [
       "Led a team of 4 scholars & developers in designing the architectural blueprint of the job recommendation pipeline.",
@@ -193,7 +201,7 @@ export const jnfbProjects: Project[] = [
     type: "personal",
     role: "Front End Designer / UI/UX Designer / Tester",
     techStack: ["Next.js", "React.js", "Tailwind CSS", "Material UI"],
-    duration: "2026-Present",
+    duration: "2026-Present (Development)",
     description: "An interactive, game-accurate web application showcasing all the list of Main Trials and MK-Challenges and its information needed to guide the players (also known as reagents) to navigate throughout the therapy in the game.",
     bullets: [
       "Programmed a sleek, military-grade terminal interface evoking the psychological horror atmosphere of Red Barrels' Outlast series.",
@@ -351,38 +359,123 @@ export const jnfbAchievements: Achievement[] = [
 
 export const jnfbCertifications: Certification[] = [
   {
+    id: "tesda-ddux",
+    title: "Developing Designs for User Experience (TESDA Online Program)",
+    issuer: "TESDA",
+    issuerFull: "Technical Education and Skills Development Authority",
+    location: "Taguig City, Metro Manila",
+    year: "2026",
+    issueDate: "August 20, 2026",
+    credentialId: "6q4B6fIc8p",
+    credentialUrl: "/certifications/UX Design Certificate of Completion.pdf",
+    status: "Verified & Active",
+    description: "Structured competency curriculum focused on User Experience (UX) design methodologies. Emphasizes user research methodologies, empathy mapping, persona development, user journey mapping, information architecture, low-fidelity wireframing, usability testing protocols, heuristic evaluations, and iterative user-centered design frameworks.",
+    skills: ["UX Research", "User Personas", "User Journey Mapping", "Information Architecture", "Usability Testing", "Wireframing & Lo-Fi Prototyping", "Heuristic Evaluation", "User-Centered Design (UCD)"],
+    modulesCovered: [
+      "Fundamentals of User Experience & User-Centered Design (UCD)",
+      "Conducting User Research, Empathy Mapping & Persona Formulation",
+      "Information Architecture, User Flows & Journey Schematics",
+      "Usability Testing Protocols, Heuristic Evaluation & Iterative Refinement"
+    ]
+  },
+  {
     id: "tesda-ddui",
     title: "Developing Designs for User Interface (TESDA Online Program)",
     issuer: "TESDA",
+    issuerFull: "Technical Education and Skills Development Authority",
     location: "Taguig City, Metro Manila",
-    year: "2026"
+    year: "2026",
+    issueDate: "August 10, 2026",
+    credentialId: "FzNRbN0c07",
+    credentialUrl: "/certifications/UI Design Certificate of Completion.pdf",
+    status: "Verified & Active",
+    description: "Comprehensive institutional curriculum focused on user interface and user experience design principles. Covers visual hierarchy, design systems, wireframing, color psychology, accessibility guidelines, typography, responsive prototyping, and translating user research into polished digital products.",
+    skills: ["UI Design", "Visual Hierarchy", "Wireframing", "Figma Prototyping", "Design Systems", "UX Research", "Accessibility Standards", "Responsive Layouts"],
+    modulesCovered: [
+      "Core Principles of User Interface & Interaction Design",
+      "Information Architecture & Wireframe Schematics",
+      "Design Systems, Color Theory & Typographic Hierarchies",
+      "Interactive Prototyping & Usability Evaluation"
+    ]
   },
   {
     id: "hr-js-intermediate",
     title: "JavaScript (Intermediate) Certificate",
     issuer: "HackerRank",
+    issuerFull: "HackerRank Technical Assessment & Certification",
     location: "Taguig City, Metro Manila",
-    year: "2026"
+    year: "2026",
+    issueDate: "January 05, 2026",
+    credentialId: "83bbc6f1a38a",
+    credentialUrl: "https://www.hackerrank.com/certificates/83bbc6f1a38a",
+    status: "Verified & Active",
+    description: "Rigorous technical assessment validating intermediate JavaScript (ES6+) concepts, complex data structure manipulation, asynchronous programming paradigms (Promises, async/await), event loop mechanics, closures, and object-oriented prototypes under timed benchmarks.",
+    skills: ["JavaScript (ES6+)", "Asynchronous Programming", "Promises & Async/Await", "Event Loop Mechanics", "Closures & Scope", "Object Prototypes", "Data Structure Optimization"],
+    modulesCovered: [
+      "Advanced Function Closures & Lexical Scoping",
+      "Asynchronous Control Flows & Promise Chaining",
+      "Memory Management & Garbage Collection Concepts",
+      "Algorithmic Data Transformation & Regex Parsing"
+    ]
   },
   {
     id: "hr-js-basic",
     title: "JavaScript (Basic) Certificate",
     issuer: "HackerRank",
+    issuerFull: "HackerRank Technical Assessment & Certification",
     location: "Taguig City, Metro Manila",
-    year: "2026"
+    year: "2026",
+    issueDate: "January 05, 2026",
+    credentialId: "4a1800678de3",
+    credentialUrl: "https://www.hackerrank.com/certificates/4a1800678de3",
+    status: "Verified & Active",
+    description: "Evaluates fundamental competencies in modern JavaScript including language syntax, data types, conditional branching, loops, array transformations, functions, and standard problem-solving algorithms.",
+    skills: ["JavaScript Basics", "Control Flow & Loops", "Array Methods (map, filter, reduce)", "Object Manipulation", "Functional Programming Fundamentals"],
+    modulesCovered: [
+      "JavaScript Data Types & Operators",
+      "Conditional Logic & Control Flow Structures",
+      "Array & String Processing Algorithms",
+      "Core Function Declarations & Arrow Functions"
+    ]
   },
   {
     id: "fcc-responsive",
     title: "Responsive Web Design Certification",
     issuer: "freeCodeCamp",
+    issuerFull: "freeCodeCamp Developer Curriculum & Certification",
     location: "Taguig City, Metro Manila",
-    year: "2025"
+    year: "2025",
+    issueDate: "December 13, 2025",
+    credentialId: "jao-nicholas-benedicto-rwdv9",
+    credentialUrl: "https://www.freecodecamp.org/certification/jao-nicholas-benedicto/responsive-web-design-v9",
+    status: "Verified & Active (300 Hours)",
+    description: "300 hours of verified coursework and project building verifying deep mastery of semantic HTML5, modern CSS3 styling, Flexbox layouts, CSS Grid systems, responsive typography, media queries, accessibility (a11y), and viewport optimization across devices.",
+    skills: ["HTML5 Semantic Structure", "CSS3 Modern Styling", "CSS Flexbox", "CSS Grid", "Responsive Web Design", "Web Accessibility (WCAG/a11y)", "Cross-Browser Compatibility"],
+    modulesCovered: [
+      "Semantic HTML5 & Information Structuring",
+      "CSS Fundamentals, Colors, and Box Model",
+      "Advanced Flexbox & Grid Multi-Column Layouts",
+      "Accessible Form Controls & Media Query Breakpoints"
+    ]
   },
   {
     id: "certiport-db",
     title: "IT Specialist: Databases (SQL Server)",
     issuer: "Certiport - A Pearson VUE Business",
+    issuerFull: "Certiport (Pearson VUE) IT Specialist Certification",
     location: "Taguig City, Metro Manila",
-    year: "2025"
+    year: "2025",
+    issueDate: "December 5, 2025",
+    credentialId: "cDc8-uSrC",
+    credentialUrl: "/certifications/IT Specialist Databases.pdf",
+    status: "Verified // Pearson VUE Authenticated",
+    description: "Industry-standard certification validating database design, relational modeling, entity-relationship diagrams (ERD), SQL queries (SELECT, INSERT, UPDATE, DELETE), normalization forms (1NF to 3NF), primary/foreign keys, joins, subqueries, and database transaction integrity in Microsoft SQL Server.",
+    skills: ["Microsoft SQL Server", "Relational Database Design", "ANSI SQL Queries", "Database Normalization (1NF-3NF)", "Table Joins & Subqueries", "Data Integrity & Constraints", "CRUD Operations"],
+    modulesCovered: [
+      "Database Concepts & Architecture",
+      "Create Database Objects & Data Definition (DDL)",
+      "Manipulate Data (DML) & Complex Multi-Table Joins",
+      "Troubleshoot Database Queries & Ensure Integrity"
+    ]
   },
 ];

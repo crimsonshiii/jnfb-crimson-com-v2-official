@@ -14,7 +14,10 @@ import {
   Clock, 
   MapPin, 
   Cpu,
-  FileCheck
+  FileCheck,
+  FileText,
+  Eye,
+  Download
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { jnfbCertifications, jnfbAchievements, Certification } from '../data';
@@ -23,6 +26,7 @@ import { Badge } from '@/components/ui/badge';
 export default function AchievementsAndCertificationsCard() {
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
   const [copiedId, setCopiedId] = useState(false);
+  const [modalTab, setModalTab] = useState<'details' | 'pdf'>('details');
 
   // Sound generator
   const playLocalBeep = (freq = 520, type: OscillatorType = 'sine', duration = 0.06) => {
@@ -51,12 +55,14 @@ export default function AchievementsAndCertificationsCard() {
     playLocalBeep(560, 'sine', 0.07);
     setSelectedCert(cert);
     setCopiedId(false);
+    setModalTab('details');
   };
 
   const handleCloseModal = () => {
     playLocalBeep(420, 'sine', 0.06);
     setSelectedCert(null);
     setCopiedId(false);
+    setModalTab('details');
   };
 
   const handleCopyId = (e: React.MouseEvent, idText?: string) => {
@@ -283,125 +289,182 @@ export default function AchievementsAndCertificationsCard() {
                 </button>
               </div>
 
+              {/* View mode toggle tabs (if PDF is available) */}
+              {selectedCert.credentialUrl && selectedCert.credentialUrl.toLowerCase().endsWith('.pdf') && (
+                <div className="px-6 py-2 bg-[#090909] border-b border-zinc-800/40 flex items-center gap-2 relative z-10">
+                  <button
+                    onClick={() => {
+                      playLocalBeep(520, 'sine', 0.05);
+                      setModalTab('details');
+                    }}
+                    className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                      modalTab === 'details'
+                        ? 'bg-red-950/60 border border-red-800/60 text-red-300 shadow-[0_0_12px_rgba(220,38,38,0.2)]'
+                        : 'bg-zinc-900/60 border border-zinc-800/60 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60'
+                    }`}
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>CURRICULUM SPECIFICATIONS</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      playLocalBeep(640, 'sine', 0.05);
+                      setModalTab('pdf');
+                    }}
+                    className={`px-3 py-1.5 rounded-md font-mono text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer ${
+                      modalTab === 'pdf'
+                        ? 'bg-red-950/60 border border-red-800/60 text-red-300 shadow-[0_0_12px_rgba(220,38,38,0.2)]'
+                        : 'bg-zinc-900/60 border border-zinc-800/60 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60'
+                    }`}
+                  >
+                    <Eye className="w-3.5 h-3.5" />
+                    <span>PREVIEW CERTIFICATE (PDF)</span>
+                  </button>
+                </div>
+              )}
+
               {/* Scrollable Modal Content */}
               <div className="p-6 overflow-y-auto space-y-6 flex-1 text-zinc-300 text-sm">
                 
-                {/* Tactical Certificate Verification Banner Card */}
-                <div className="p-4 bg-zinc-950/80 border border-zinc-800/70 rounded-lg space-y-3 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 transform translate-x-3 -translate-y-3 opacity-5 pointer-events-none text-red-500">
-                    <Award className="w-28 h-28" />
-                  </div>
+                {modalTab === 'pdf' && selectedCert.credentialUrl ? (
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between text-xs font-mono text-zinc-400">
+                      <span className="flex items-center gap-1.5 text-red-400 font-bold">
+                        <FileCheck className="w-3.5 h-3.5" />
+                        INTERACTIVE_DOCUMENT_PREVIEW
+                      </span>
+                      <span>100% VERIFIED AUTHENTIC</span>
+                    </div>
 
-                  <div className="flex flex-wrap items-center justify-between gap-3 relative z-10 border-b border-zinc-800/40 pb-3">
-                    <div className="flex items-center gap-2.5">
-                      <div className="p-2 bg-red-950/40 border border-red-900/30 text-red-400 rounded-md">
-                        <FileCheck className="w-4 h-4" />
+                    <div className="relative w-full rounded-lg overflow-hidden border border-zinc-800/80 bg-[#080808] shadow-inner">
+                      <iframe
+                        src={encodeURI(selectedCert.credentialUrl)}
+                        title={selectedCert.title}
+                        className="w-full h-[460px] sm:h-[500px] border-0"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {/* Tactical Certificate Verification Banner Card */}
+                    <div className="p-4 bg-zinc-950/80 border border-zinc-800/70 rounded-lg space-y-3 relative overflow-hidden">
+                      <div className="absolute top-0 right-0 transform translate-x-3 -translate-y-3 opacity-5 pointer-events-none text-red-500">
+                        <Award className="w-28 h-28" />
                       </div>
-                      <div>
-                        <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
-                          AUTHENTICATION NODE
+
+                      <div className="flex flex-wrap items-center justify-between gap-3 relative z-10 border-b border-zinc-800/40 pb-3">
+                        <div className="flex items-center gap-2.5">
+                          <div className="p-2 bg-red-950/40 border border-red-900/30 text-red-400 rounded-md">
+                            <FileCheck className="w-4 h-4" />
+                          </div>
+                          <div>
+                            <div className="text-[10px] font-mono text-zinc-400 uppercase tracking-wider">
+                              AUTHENTICATION NODE
+                            </div>
+                            <div className="text-xs font-mono font-bold text-zinc-200">
+                              {selectedCert.issuer} // ACCREDITED
+                            </div>
+                          </div>
                         </div>
-                        <div className="text-xs font-mono font-bold text-zinc-200">
-                          {selectedCert.issuer} // ACCREDITED
+
+                        {selectedCert.credentialId && (
+                          <div className="flex items-center gap-2 bg-zinc-900/90 border border-zinc-800 px-2.5 py-1 rounded-md">
+                            <span className="text-[10px] font-mono text-zinc-400">ID:</span>
+                            <code className="text-[11px] font-mono font-bold text-red-400">
+                              {selectedCert.credentialId}
+                            </code>
+                            <button
+                              onClick={(e) => handleCopyId(e, selectedCert.credentialId)}
+                              className="text-zinc-400 hover:text-zinc-200 transition-colors p-0.5 rounded cursor-pointer"
+                              title="Copy Credential ID"
+                            >
+                              {copiedId ? (
+                                <Check className="w-3.5 h-3.5 text-emerald-400" />
+                              ) : (
+                                <Copy className="w-3.5 h-3.5" />
+                              )}
+                            </button>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono pt-1">
+                        <div>
+                          <span className="text-[10px] text-zinc-400 block">ISSUE DATE</span>
+                          <span className="text-zinc-200 font-semibold">{selectedCert.issueDate || selectedCert.year}</span>
+                        </div>
+                        <div>
+                          <span className="text-[10px] text-zinc-400 block">SECURITY STATUS</span>
+                          <span className="text-emerald-400 font-semibold flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                            {selectedCert.status || "VALID"}
+                          </span>
+                        </div>
+                        <div className="col-span-2 sm:col-span-1">
+                          <span className="text-[10px] text-zinc-400 block">AUTHORITY</span>
+                          <span className="text-zinc-200 font-semibold truncate block">{selectedCert.issuer}</span>
                         </div>
                       </div>
                     </div>
 
-                    {selectedCert.credentialId && (
-                      <div className="flex items-center gap-2 bg-zinc-900/90 border border-zinc-800 px-2.5 py-1 rounded-md">
-                        <span className="text-[10px] font-mono text-zinc-400">ID:</span>
-                        <code className="text-[11px] font-mono font-bold text-red-400">
-                          {selectedCert.credentialId}
-                        </code>
-                        <button
-                          onClick={(e) => handleCopyId(e, selectedCert.credentialId)}
-                          className="text-zinc-400 hover:text-zinc-200 transition-colors p-0.5 rounded cursor-pointer"
-                          title="Copy Credential ID"
-                        >
-                          {copiedId ? (
-                            <Check className="w-3.5 h-3.5 text-emerald-400" />
-                          ) : (
-                            <Copy className="w-3.5 h-3.5" />
-                          )}
-                        </button>
+                    {/* Section 1: Detailed Description & Overview */}
+                    <div className="space-y-2">
+                      <h3 className="font-mono text-xs text-red-500 font-bold uppercase tracking-wider flex items-center gap-2">
+                        <span className="text-red-500">_&gt;</span>
+                        CURRICULUM_AND_COMPETENCY_OVERVIEW
+                      </h3>
+                      <div className="p-4 bg-[#0e0e0e] border border-zinc-800/40 rounded-lg text-zinc-300 leading-relaxed font-sans text-sm">
+                        {selectedCert.description || "Comprehensive technical assessment demonstrating verified domain knowledge and practical application standard."}
+                      </div>
+                    </div>
+
+                    {/* Section 2: Verified Skills Matrix */}
+                    {selectedCert.skills && selectedCert.skills.length > 0 && (
+                      <div className="space-y-2.5">
+                        <h3 className="font-mono text-xs text-red-500 font-bold uppercase tracking-wider flex items-center justify-between">
+                          <span className="flex items-center gap-2">
+                            <Cpu className="w-3.5 h-3.5 text-red-500" />
+                            VERIFIED_TECHNICAL_SKILLS ({selectedCert.skills.length})
+                          </span>
+                          <span className="text-[10px] text-zinc-400 font-normal">
+                            MASTERED & TESTED
+                          </span>
+                        </h3>
+
+                        <div className="flex flex-wrap gap-2">
+                          {selectedCert.skills.map((skill, idx) => (
+                            <div
+                              key={idx}
+                              className="px-3 py-1.5 rounded-md bg-[#131313] border border-zinc-800/80 text-xs font-mono text-zinc-200 hover:border-red-600/50 hover:text-red-400 hover:bg-[#181818] transition-all flex items-center gap-1.5 shadow-sm"
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
+                              <span>{skill}</span>
+                            </div>
+                          ))}
+                        </div>
                       </div>
                     )}
-                  </div>
 
-                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono pt-1">
-                    <div>
-                      <span className="text-[10px] text-zinc-400 block">ISSUE DATE</span>
-                      <span className="text-zinc-200 font-semibold">{selectedCert.issueDate || selectedCert.year}</span>
-                    </div>
-                    <div>
-                      <span className="text-[10px] text-zinc-400 block">SECURITY STATUS</span>
-                      <span className="text-emerald-400 font-semibold flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                        {selectedCert.status || "VALID"}
-                      </span>
-                    </div>
-                    <div className="col-span-2 sm:col-span-1">
-                      <span className="text-[10px] text-zinc-400 block">AUTHORITY</span>
-                      <span className="text-zinc-200 font-semibold truncate block">{selectedCert.issuer}</span>
-                    </div>
-                  </div>
-                </div>
+                    {/* Section 3: Core Validation Checkpoints / Modules */}
+                    {selectedCert.modulesCovered && selectedCert.modulesCovered.length > 0 && (
+                      <div className="space-y-2.5">
+                        <h3 className="font-mono text-xs text-red-500 font-bold uppercase tracking-wider flex items-center gap-2">
+                          <span className="text-red-500">_&gt;</span>
+                          CURRICULUM_VALIDATION_MODULES
+                        </h3>
 
-                {/* Section 1: Detailed Description & Overview */}
-                <div className="space-y-2">
-                  <h3 className="font-mono text-xs text-red-500 font-bold uppercase tracking-wider flex items-center gap-2">
-                    <span className="text-red-500">_&gt;</span>
-                    CURRICULUM_AND_COMPETENCY_OVERVIEW
-                  </h3>
-                  <div className="p-4 bg-[#0e0e0e] border border-zinc-800/40 rounded-lg text-zinc-300 leading-relaxed font-sans text-sm">
-                    {selectedCert.description || "Comprehensive technical assessment demonstrating verified domain knowledge and practical application standard."}
-                  </div>
-                </div>
-
-                {/* Section 2: Verified Skills Matrix */}
-                {selectedCert.skills && selectedCert.skills.length > 0 && (
-                  <div className="space-y-2.5">
-                    <h3 className="font-mono text-xs text-red-500 font-bold uppercase tracking-wider flex items-center justify-between">
-                      <span className="flex items-center gap-2">
-                        <Cpu className="w-3.5 h-3.5 text-red-500" />
-                        VERIFIED_TECHNICAL_SKILLS ({selectedCert.skills.length})
-                      </span>
-                      <span className="text-[10px] text-zinc-400 font-normal">
-                        MASTERED & TESTED
-                      </span>
-                    </h3>
-
-                    <div className="flex flex-wrap gap-2">
-                      {selectedCert.skills.map((skill, idx) => (
-                        <div
-                          key={idx}
-                          className="px-3 py-1.5 rounded-md bg-[#131313] border border-zinc-800/80 text-xs font-mono text-zinc-200 hover:border-red-600/50 hover:text-red-400 hover:bg-[#181818] transition-all flex items-center gap-1.5 shadow-sm"
-                        >
-                          <span className="w-1.5 h-1.5 rounded-full bg-red-500" />
-                          <span>{skill}</span>
+                        <div className="space-y-2 bg-[#0d0d0d] p-3.5 rounded-lg border border-zinc-800/40">
+                          {selectedCert.modulesCovered.map((module, mIdx) => (
+                            <div key={mIdx} className="flex items-start gap-2.5 text-xs text-zinc-300">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
+                              <span className="leading-snug">{module}</span>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {/* Section 3: Core Validation Checkpoints / Modules */}
-                {selectedCert.modulesCovered && selectedCert.modulesCovered.length > 0 && (
-                  <div className="space-y-2.5">
-                    <h3 className="font-mono text-xs text-red-500 font-bold uppercase tracking-wider flex items-center gap-2">
-                      <span className="text-red-500">_&gt;</span>
-                      CURRICULUM_VALIDATION_MODULES
-                    </h3>
-
-                    <div className="space-y-2 bg-[#0d0d0d] p-3.5 rounded-lg border border-zinc-800/40">
-                      {selectedCert.modulesCovered.map((module, mIdx) => (
-                        <div key={mIdx} className="flex items-start gap-2.5 text-xs text-zinc-300">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
-                          <span className="leading-snug">{module}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                      </div>
+                    )}
+                  </>
                 )}
 
               </div>
@@ -437,7 +500,19 @@ export default function AchievementsAndCertificationsCard() {
                       className="px-3 py-2 rounded-md bg-red-950/40 border border-red-900/40 hover:bg-red-900/40 hover:border-red-700/50 text-red-400 hover:text-red-300 font-mono text-xs font-bold flex items-center gap-1.5 transition-all"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      {selectedCert.credentialUrl.toLowerCase().endsWith('.pdf') ? 'VIEW CERTIFICATE (PDF)' : 'VERIFY CREDENTIAL'}
+                      {selectedCert.credentialUrl.toLowerCase().endsWith('.pdf') ? 'OPEN IN NEW TAB' : 'VERIFY CREDENTIAL'}
+                    </a>
+                  )}
+
+                  {selectedCert.credentialUrl && selectedCert.credentialUrl.toLowerCase().endsWith('.pdf') && (
+                    <a
+                      href={encodeURI(selectedCert.credentialUrl)}
+                      download
+                      onClick={() => playLocalBeep(700, 'sine', 0.08)}
+                      className="px-3 py-2 rounded-md bg-zinc-900 border border-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-white font-mono text-xs flex items-center gap-1.5 transition-all"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      <span>DOWNLOAD</span>
                     </a>
                   )}
                 </div>

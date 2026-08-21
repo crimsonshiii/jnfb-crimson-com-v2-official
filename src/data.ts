@@ -73,6 +73,7 @@ export interface Certification {
   skills?: string[];
   credentialId?: string;
   credentialUrl?: string;
+  certificateUrl?: string;
   status?: string;
   modulesCovered?: string[];
 }
@@ -358,6 +359,47 @@ export const jnfbAchievements: Achievement[] = [
 ];
 
 export const jnfbCertifications: Certification[] = [
+  {
+    id: "ibm-edtp",
+    title: "Enterprise Design Thinking Practitioner",
+    issuer: "IBM SkillsBuild",
+    issuerFull: "IBM",
+    location: "Taguig City, Metro Manila",
+    year: "2026",
+    issueDate: "August 21, 2026",
+    credentialId: "d2ccd3bf-104e-4fef-b9b2-82e83be7d267",
+    credentialUrl: "https://www.credly.com/badges/d2ccd3bf-104e-4fef-b9b2-82e83be7d267/public_url",
+    certificateUrl: "https://drive.google.com/file/d/1UOSxnQK6YH9t4ojz-i4hVws-ZxOc6GD_/view?usp=drive_link",
+    status: "Verified & Active",
+    description: "This earner has knowledge of the value of Enterprise Design Thinking and its framework to solve complex, human-centered problems at scale. The individual understands the value of collaborating, conducting design research, synthesizing findings, prototyping, and storytelling to align teams. The Practitioner knows their primary user group, shares Enterprise Design Thinking with others, and finds opportunities to apply design thinking activities in their everyday work to drive better outcomes.",
+    skills: ["Enterprise Design Thinking", "The Loop (Observe, Reflect, Make)", "The Keys (Hills, Playbacks, Sponsor Users)", "Empathy Mapping", "Scenario Mapping (As-Is & To-Be)", "Big Idea Generation", "Prioritization Grids", "User-Outcome Alignment"],
+    modulesCovered: [
+      "The Principles: Focus on User Outcomes, Restless Reinvention & Diverse Teams",
+      "The Loop: Continuous Cycle of Observing, Reflecting, and Making",
+      "The Keys: Hills, Playbacks, and Sponsor User Collaboration",
+      "Core Activities: Empathy Maps, Scenario Maps, Big Ideas & Prioritization Grids"
+    ]
+  },
+  {
+    id: "spl-reactjscomponent",
+    title: "Getting Started with ReactJS Components",
+    issuer: "Simplilearn SkillUP",
+    issuerFull: "Simplilearn",
+    location: "Taguig City, Metro Manila",
+    year: "2026",
+    issueDate: "August 20, 2026",
+    credentialId: "10629564",
+    credentialUrl: "https://drive.google.com/file/d/1YFFCDaEEKJ8EkBgxvf-CQ5v4Gtbtl1rG/view?usp=drive_link",
+    status: "Verified & Active",
+    description: "Comprehensive training on React components as the foundational building blocks of modern React web applications. Covers functional and class components, JSX syntax, component hierarchy and composition, unidirectional data flow, Props, and State management.",
+    skills: ["React Components", "Types of Components", "Higher-Order Components (HOC)", "Pure Components", "React Props", "React State Management"],
+    modulesCovered: [
+      "Lesson 01: Types of Components",
+      "Lesson 02: Higher-Order and Pure Components",
+      "Lesson 03: Props",
+      "Lesson 04: State"
+    ]
+  },
   {
     id: "tesda-ddux",
     title: "Developing Designs for User Experience (TESDA Online Program)",

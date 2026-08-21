@@ -437,7 +437,24 @@ export default function AchievementsAndCertificationsCard() {
                       className="px-3 py-2 rounded-md bg-red-950/40 border border-red-900/40 hover:bg-red-900/40 hover:border-red-700/50 text-red-400 hover:text-red-300 font-mono text-xs font-bold flex items-center gap-1.5 transition-all"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      {selectedCert.credentialUrl.toLowerCase().endsWith('.pdf') ? 'VIEW CERTIFICATE (PDF)' : 'VERIFY CREDENTIAL'}
+                      {selectedCert.credentialUrl.includes('credly.com')
+                        ? 'VIEW CREDLY BADGE'
+                        : selectedCert.credentialUrl.toLowerCase().endsWith('.pdf')
+                        ? 'VIEW CERTIFICATE (PDF)'
+                        : 'VERIFY CREDENTIAL'}
+                    </a>
+                  )}
+
+                  {selectedCert.certificateUrl && (
+                    <a
+                      href={encodeURI(selectedCert.certificateUrl)}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={() => playLocalBeep(600, 'sine', 0.08)}
+                      className="px-3 py-2 rounded-md bg-zinc-900 border border-zinc-800 hover:border-red-900/50 hover:bg-zinc-800 text-zinc-200 hover:text-red-400 font-mono text-xs font-bold flex items-center gap-1.5 transition-all"
+                    >
+                      <ExternalLink className="w-3.5 h-3.5 text-red-400" />
+                      VIEW CERTIFICATE
                     </a>
                   )}
                 </div>
